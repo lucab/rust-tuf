@@ -98,9 +98,9 @@ pub struct KeyId(Vec<u8>);
 impl KeyId {
     /// Parse a key ID from a base64url string.
     pub fn from_string(string: &str) -> Result<Self> {
-        if string.len() != 44 {
+        if string.is_empty() {
             return Err(Error::IllegalArgument(
-                "Base64 key ID must be 44 characters long".into(),
+                "Invalid empty key ID".into(),
             ));
         }
         Ok(KeyId(BASE64URL.decode(string.as_bytes())?))
