@@ -155,7 +155,7 @@ impl FromStr for SignatureScheme {
 
     fn from_str(s: &str) -> ::std::result::Result<Self, Self::Err> {
         match s {
-            "ed25519" => Ok(SignatureScheme::Ed25519),
+            "ed25519" | "ecdsa" | "eddsa" => Ok(SignatureScheme::Ed25519),
             "rsassa-pss-sha256" => Ok(SignatureScheme::RsaSsaPssSha256),
             "rsassa-pss-sha512" => Ok(SignatureScheme::RsaSsaPssSha512),
             typ => Err(Error::Encoding(typ.into())),
