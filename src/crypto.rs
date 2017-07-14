@@ -577,8 +577,11 @@ impl Debug for PublicKeyValue {
 /// A structure that contains a `Signature` and associated data for verifying it.
 #[derive(Debug, PartialEq, Serialize, Deserialize)]
 pub struct Signature {
+    #[serde(rename = "keyid")]
     key_id: KeyId,
+    #[serde(rename = "method")]
     scheme: SignatureScheme,
+    #[serde(rename = "sig")]
     value: SignatureValue,
 }
 
